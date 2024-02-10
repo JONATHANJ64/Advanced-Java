@@ -14,9 +14,10 @@ import {map} from "rxjs/operators";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-//Create Observables - Not Null
+// Observables - Not Null
   welcomeMessageEng$!: Observable<string>
   welcomeMessageFre$!: Observable<string>
+  presentationTimes$!: Observable<string>
 
   constructor(private httpClient:HttpClient){}
 
@@ -32,13 +33,17 @@ export class AppComponent implements OnInit{
   currentCheckOutVal!:string;
 
     ngOnInit(){
-      // Call welcome message in different languages to site
-      //English message.  localhost:8080/welcome/?lang=en-us
+      //English message.
+      // localhost:8080/welcome/?lang=en-us
       this.welcomeMessageEng$ = this.httpClient.get(this.baseURL + "/welcome/?lang=en-US", {responseType: "text"})
 
-      //French Message. localhost:8080/welcome/?lang=fr-CA
+      //French Message.
+      // localhost:8080/welcome/?lang=fr-CA
       this.welcomeMessageFre$ = this.httpClient.get(this.baseURL + "/welcome/?lang=fr-CA", {responseType: "text"})
 
+
+      //Presentation Times
+      this.presentationTimes$ = this.httpClient.get(this.baseURL + "/presentation", {responseType: "text"})
 
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
