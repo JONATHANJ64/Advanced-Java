@@ -1,14 +1,14 @@
-# Use a base image suitable for your application (e.g., OpenJDK for Java backend)
+#Sets up initial image
 FROM openjdk
 
 # Copy the JAR file to the container
 COPY ./D387_sample_code-0.0.2-SNAPSHOT.jar /usr/src/D387_sample_code-0.0.2-SNAPSHOT.jar
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /usr/src
 
-# Expose the port your Spring application runs on
+#Exposes port 8080
 EXPOSE 8080
 
-# Command to run the Spring application
-ENTRYPOINT ["java","-jar","/app/D387_sample_code-0.0.2-SNAPSHOT.jar"]
+#Runs Jar File
+CMD ["java", "-jar", "D387_sample_code-0.0.2-SNAPSHOT.jar"]
