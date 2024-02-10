@@ -2,7 +2,7 @@
 FROM openjdk
 
 # Copy the JAR file to the container
-COPY target/D387_sample_code-0.0.2-SNAPSHOT.jar app.jar
+COPY ./D387_sample_code-0.0.2-SNAPSHOT.jar /usr/src/D387_sample_code-0.0.2-SNAPSHOT.jar
 
 # Set the working directory
 WORKDIR /app
