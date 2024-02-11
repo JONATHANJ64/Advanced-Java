@@ -2,13 +2,14 @@
 FROM openjdk
 
 # Copy the JAR file to the container
-COPY ./D387_sample_code-0.0.2-SNAPSHOT.jar /usr/src/D387_sample_code-0.0.2-SNAPSHOT.jar
+COPY target/D387_sample_code-0.0.2-SNAPSHOT.jar app.jar
 
 # Set the working directory
-WORKDIR /usr/src
+WORKDIR /app
 
 #Exposes port 8080
 EXPOSE 8080
 
 #Runs Jar File
-CMD ["java", "-jar", "D387_sample_code-0.0.2-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
+
